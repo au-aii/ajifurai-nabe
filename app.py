@@ -1,49 +1,50 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO
+from flask import Flask, render_template, Response
 import cv2
-import base64
-import numpy as np
-from threading import Thread
 
 app = Flask(__name__)
-socketio = SocketIO(app)
 
-# 人物検出用のカスケード分類器を読み込む
+# カスケード分類器を読み込む
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-def detect_person(frame):
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-    return len(faces) > 0
-
-def gen_frames():
-    camera = cv2.VideoCapture(0)
+def generate_frames():
+    camera = cv2.VideoCapture(0)  # Webカメラを開く
     while True:
         success, frame = camera.read()
         if not success:
             break
         else:
-            person_detected = detect_person(frame)
+            # グレースケールに変換
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            # 顔を検出
+            faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+            
+            if len(faces) > 0:
+                # 顔が検出された場合
+                for (x, y, w, h) in faces:
+                    cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+                status = "認識している"
+            else:
+                # 顔が検出されなかった場合
+                status = "認識できていない"
+            
+            # 画像にステータスを追加
+            cv2.putText(frame, status, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            
+            # フレームをJPEGに変換
             ret, buffer = cv2.imencode('.jpg', frame)
-            frame = base64.b64encode(buffer).decode('utf-8')
-            socketio.emit('video_feed', {'image': frame, 'person_detected': person_detected})
+            frame = buffer.tobytes()
+            
+            # フレームを生成
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@socketio.on('connect')
-def test_connect():
-    print('Client connected')
-    global thread
-    if not thread.is_alive():
-        thread = Thread(target=gen_frames)
-        thread.start()
-
-@socketio.on('disconnect')
-def test_disconnect():
-    print('Client disconnected')
+@app.route('/video_feed')
+def video_feed():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    thread = Thread()
-    socketio.run(app)
+    app.run(debug=True)
