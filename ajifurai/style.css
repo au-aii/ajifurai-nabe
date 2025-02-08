@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(transparent 70%, #a7d6ff 70%);
+}
+
+table {
+    width: 90%;
+    height: 80%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th {
+    border: 1px solid black;
+    width: calc(100% / 3);
+    height: calc(100% / 3);
+}
+
+tr:first-child th:first-child {
+    background-color: red;
+}
