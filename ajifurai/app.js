@@ -5,12 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {// 津江のセルを�
     let yoshidaCell = document.getElementById("yoshida");
 
     // result を仮に定義（例: サーバーから取得する場合など）ここはとりあえず認識としているだけ！！最終的には消す！
-    let result = "Recognition";
     // let result1 = "認識できない";  // ここで result を定義
     // let result2 = "認識できない";
     // let result3 = "認識できない";
     // let result4 = "認識できない";
-
 
     
     if (typeof result === "undefined"){
