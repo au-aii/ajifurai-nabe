@@ -21,18 +21,19 @@
         </tr>
         <tr>
           <th id = "takahashi">髙橋</th>
-          <th>清水</th>
+          <th>和田</th>
           <th id = "yoshida">吉田</th>
         </tr>
       </table>
 
     <script>//Pythonからの戻り値を受け取るところ：Pythonにこんな感じのを書く感じ：return render_template("index.html", result = 変数)
-
+    
+        let result = "{{ status }}"
         let result1 = "{{ result1 }}"; //津江が認識できたらresult1の値を"認識"、できていなかったら"認識できない"にしてください。
         let result2 = "{{ result2 }}"; //上の津江の代わりに田中さんです。
         let result3 = "{{ result3 }}";//上の津江の代わりに髙橋さんです。
         let result4 = "{{ result4 }}"; //上の津江の代わりに吉田さんです。
-        
+
     </script>
 
     <script src="app.js"></script> 

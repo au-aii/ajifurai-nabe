@@ -2,21 +2,26 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     height: 100vh;
     margin: 0;
+    padding: 1%;
+    background-image:url("https://chicodeza.com/wordpress/wp-content/uploads/pinnkugurade-tx3.png");
+    background-repeat: no-repeat;
+    background-position:0% 0%;
+    background-size: cover;
+    overflow: hidden;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 2%;
-    background: linear-gradient(transparent 70%, #a7d6ff 70%);
+    color: azure;
 }
 
 table{
     border-collapse:separate;
     border-spacing: 5px;
-    width: 100%;
+    width: 50%;
     height: 80%;
   }
   
