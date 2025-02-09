@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: left;
+    text-align: center;
     height: 100vh;
     margin: 0;
     padding: 1%;
@@ -10,10 +11,6 @@ body {
     overflow: hidden;
 }
 
-/* h1 {
-    text-align: center;
-    color: black;
-} */
 #title {
     position: absolute;
     top: 5%;

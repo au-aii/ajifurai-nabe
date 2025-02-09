@@ -1,115 +1,78 @@
-// document.addEventListener("DOMContentLoaded", function() {// 津江のセルを取得
-//     let tsueCell = document.getElementById("tsue");
-//     let tanakaCell = document.getElementById("tanaka");
-//     let takahashiCell = document.getElementById("takahashi");
-//     let yoshidaCell = document.getElementById("yoshida");
-
-    // result を仮に定義（例: サーバーから取得する場合など）ここはとりあえず認識としているだけ！！最終的には消す！
-    // let result = "Recognition";
-    // let result1 = "認識できない";  // ここで result を定義
-    // let result2 = "認識できない";
-    // let result3 = "認識できない";
-    // let result4 = "認識できない";
-
-    
-//     if (typeof result === "undefined"){
-//         tsueCell.style.backgroundColor = "#c2c2c2";
-//         tanakaCell.style.backgroundColor = "#c2c2c2";
-//         takahashiCell.style.backgroundColor = "#c2c2c2";
-//         yoshidaCell.style.backgroundColor = "#c2c2c2";
-//         alert("undefined");
-//     }
-//     // result1 の値に応じて背景色を変更
-//     else if (typeof result !== "undefined") {  // result1 が正しく読み込まれているか確認
-//         if (result === "Recognition") {
-//             tsueCell.style.backgroundColor = "#ebffb5";
-//             tanakaCell.style.backgroundColor = "#ebffb5";
-//             takahashiCell.style.backgroundColor = "#ebffb5";
-//             yoshidaCell.style.backgroundColor = "#ebffb5";
-//             alert("Recognition");
-//         } else if (result === "No Recognition") {
-//             tsueCell.style.backgroundColor = "#c2c2c2";
-//             tanakaCell.style.backgroundColor = "#c2c2c2";
-//             takahashiCell.style.backgroundColor = "#c2c2c2";
-//             yoshidaCell.style.backgroundColor = "#c2c2c2";
-//             alert("No Recognition");
-//         }
-//     }
-
-
-
-//     if (typeof result1 === "undefined"){
-//         tsueCell.style.backgroundColor = "#c2c2c2";
-//     }
-//     // result1 の値に応じて背景色を変更
-//     else if (typeof result1 !== "undefined") {  // result1 が正しく読み込まれているか確認
-//         if (result1 === "認識") {
-//             tsueCell.style.backgroundColor = "#ebffb5";
-//         } else if (result1 === "認識できない") {
-//             tsueCell.style.backgroundColor = "#c2c2c2";
-//         }
-//     }
-
-
-
-//     if (typeof result2 === "undefined"){
-//         tanakaCell.style.backgroundColor = "#c2c2c2";
-//     }
-//     else if (typeof result2 !== "undefined") {  // result2 が正しく読み込まれているか確認
-//         if (result2 === "認識") {
-//             tanakaCell.style.backgroundColor = "#ebffb5";
-//         } else if (result2 === "認識できない") {
-//             tanakaCell.style.backgroundColor = "#c2c2c2";
-//         }
-//     }
-
-
-
-//     if (typeof result3 === "undefined"){
-//         takahashiCell.style.backgroundColor = "#c2c2c2";
-//     }
-//     else if (typeof result3 !== "undefined") {  // result3 が正しく読み込まれているか確認
-//         if (result3 === "認識") {
-//             takahashiCell.style.backgroundColor = "#ebffb5";
-//         } else if (result3 === "認識できない") {
-//             takahashiCell.style.backgroundColor = "#c2c2c2";
-//         }
-//     }
-
-
-
-//     if (typeof result4 === "undefined"){
-//         yoshidaCell.style.backgroundColor = "#c2c2c2";
-//     }
-//     else if (typeof result4 !== "undefined") {  // result4 が正しく読み込まれているか確認
-//         if (result4 === "認識") {
-//             yoshidaCell.style.backgroundColor = "#ebffb5";
-//         } else if (result4 === "認識できない") {
-//             yoshidaCell.style.backgroundColor = "#c2c2c2";
-//         }
+// socket.on('face_detected', function(data){
+//     // 1) <div id=“status”> の文字を変更（任意）
+//     if (data.status === 'OK') {
+//       document.getElementById('status').innerText = 'Recognition';
+//       document.getElementById('status').style.color = 'red';
+//     } else {
+//       document.getElementById('status').innerText = 'No Recognition';
+//       document.getElementById('status').style.color = 'black';
 //     }
 // });
 
+socket.on('face_detected', function(data){
 document.addEventListener('DOMContentLoaded', function() {
     let toggle1 = document.getElementById('toggle3');
     let toggle2 = document.getElementById('toggle7');
     let toggle3 = document.getElementById('toggle8');
     let toggle4 = document.getElementById('toggle10');
-    if (result === "Recognition") {
+
+    if (result === "Recognition" || data.status === 'OK') {
       toggle1.checked = true;
       toggle2.checked = true;
       toggle3.checked = true;
       toggle4.checked = true;
+      document.getElementById('status').innerText = 'Recognition';
+      document.getElementById('status').style.color = 'red';
     }
     else{
         toggle1.checked = false;
         toggle2.checked = false;
         toggle3.checked = false;
         toggle4.checked = false;
+        document.getElementById('status').innerText = 'No Recognition';
+        document.getElementById('status').style.color = 'black';
     }
     // トグルの状態を即座に反映させる
     toggle.dispatchEvent(new Event('change'));
-  });
+  })});
+
+
+
+
+//   document.addEventListener('DOMContentLoaded', function() {
+//     let toggle1 = document.getElementById('toggle3');
+//     let toggle2 = document.getElementById('toggle7');
+//     let toggle3 = document.getElementById('toggle8');
+//     let toggle4 = document.getElementById('toggle10');
+//     if (result === "Recognition") {
+//       toggle1.checked = true;
+//       toggle2.checked = true;
+//       toggle3.checked = true;
+//       toggle4.checked = true;
+//     }
+//     else{
+//         toggle1.checked = false;
+//         toggle2.checked = false;
+//         toggle3.checked = false;
+//         toggle4.checked = false;
+//     }
+//     // トグルの状態を即座に反映させる
+//     toggle.dispatchEvent(new Event('change'));
+//   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 document.addEventListener("DOMContentLoaded", function () {
     // トグルスイッチの要素を取得
@@ -308,3 +271,97 @@ document.addEventListener("DOMContentLoaded", function () {
         yoshidaText.style.color = '#4bd865';
     }
 });
+
+
+// document.addEventListener("DOMContentLoaded", function() {// 津江のセルを取得
+//     let tsueCell = document.getElementById("tsue");
+//     let tanakaCell = document.getElementById("tanaka");
+//     let takahashiCell = document.getElementById("takahashi");
+//     let yoshidaCell = document.getElementById("yoshida");
+
+    // result を仮に定義（例: サーバーから取得する場合など）ここはとりあえず認識としているだけ！！最終的には消す！
+    // let result = "Recognition";
+    // let result1 = "認識できない";  // ここで result を定義
+    // let result2 = "認識できない";
+    // let result3 = "認識できない";
+    // let result4 = "認識できない";
+
+    
+//     if (typeof result === "undefined"){
+//         tsueCell.style.backgroundColor = "#c2c2c2";
+//         tanakaCell.style.backgroundColor = "#c2c2c2";
+//         takahashiCell.style.backgroundColor = "#c2c2c2";
+//         yoshidaCell.style.backgroundColor = "#c2c2c2";
+//         alert("undefined");
+//     }
+//     // result1 の値に応じて背景色を変更
+//     else if (typeof result !== "undefined") {  // result1 が正しく読み込まれているか確認
+//         if (result === "Recognition") {
+//             tsueCell.style.backgroundColor = "#ebffb5";
+//             tanakaCell.style.backgroundColor = "#ebffb5";
+//             takahashiCell.style.backgroundColor = "#ebffb5";
+//             yoshidaCell.style.backgroundColor = "#ebffb5";
+//             alert("Recognition");
+//         } else if (result === "No Recognition") {
+//             tsueCell.style.backgroundColor = "#c2c2c2";
+//             tanakaCell.style.backgroundColor = "#c2c2c2";
+//             takahashiCell.style.backgroundColor = "#c2c2c2";
+//             yoshidaCell.style.backgroundColor = "#c2c2c2";
+//             alert("No Recognition");
+//         }
+//     }
+
+
+
+//     if (typeof result1 === "undefined"){
+//         tsueCell.style.backgroundColor = "#c2c2c2";
+//     }
+//     // result1 の値に応じて背景色を変更
+//     else if (typeof result1 !== "undefined") {  // result1 が正しく読み込まれているか確認
+//         if (result1 === "認識") {
+//             tsueCell.style.backgroundColor = "#ebffb5";
+//         } else if (result1 === "認識できない") {
+//             tsueCell.style.backgroundColor = "#c2c2c2";
+//         }
+//     }
+
+
+
+//     if (typeof result2 === "undefined"){
+//         tanakaCell.style.backgroundColor = "#c2c2c2";
+//     }
+//     else if (typeof result2 !== "undefined") {  // result2 が正しく読み込まれているか確認
+//         if (result2 === "認識") {
+//             tanakaCell.style.backgroundColor = "#ebffb5";
+//         } else if (result2 === "認識できない") {
+//             tanakaCell.style.backgroundColor = "#c2c2c2";
+//         }
+//     }
+
+
+
+//     if (typeof result3 === "undefined"){
+//         takahashiCell.style.backgroundColor = "#c2c2c2";
+//     }
+//     else if (typeof result3 !== "undefined") {  // result3 が正しく読み込まれているか確認
+//         if (result3 === "認識") {
+//             takahashiCell.style.backgroundColor = "#ebffb5";
+//         } else if (result3 === "認識できない") {
+//             takahashiCell.style.backgroundColor = "#c2c2c2";
+//         }
+//     }
+
+
+
+//     if (typeof result4 === "undefined"){
+//         yoshidaCell.style.backgroundColor = "#c2c2c2";
+//     }
+//     else if (typeof result4 !== "undefined") {  // result4 が正しく読み込まれているか確認
+//         if (result4 === "認識") {
+//             yoshidaCell.style.backgroundColor = "#ebffb5";
+//         } else if (result4 === "認識できない") {
+//             yoshidaCell.style.backgroundColor = "#c2c2c2";
+//         }
+//     }
+// });
+
