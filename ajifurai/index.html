@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="app.js" defer></script>
     <title>(株)アジフライ 出席状況</title>
 </head>
 <body>
-    <h1>(株)アジフライ 出席状況</h1>
-    <table border="1">
+    <!-- <h1>(株)アジフライ 出席状況</h1> -->
+    <img id = "title" src="/image/title.png" alt="title" />
+    <!-- <table border="1">
         <tr>
           <th>青木</th>
           <th id = "tsue">津江</th>
@@ -24,18 +27,75 @@
           <th>和田</th>
           <th id = "yoshida">吉田</th>
         </tr>
-      </table>
+      </table> -->
 
-    <script>//Pythonからの戻り値を受け取るところ：Pythonにこんな感じのを書く感じ：return render_template("index.html", result = 変数)
-    
-        let result = "{{ status }}"
-        let result1 = "{{ result1 }}"; //津江が認識できたらresult1の値を"認識"、できていなかったら"認識できない"にしてください。
-        let result2 = "{{ result2 }}"; //上の津江の代わりに田中さんです。
-        let result3 = "{{ result3 }}";//上の津江の代わりに髙橋さんです。
-        let result4 = "{{ result4 }}"; //上の津江の代わりに吉田さんです。
 
+      <div class="face-camera"> <!-- ベータを消しました。 -->
+        <img id = "camera" src="{{ url_for('video_feed') }}?t={{ timestamp }}" width="640" height="480">
+      </div>
+      <div class="id" id="status"></div>
+      <script>
+        var socket = io();
+        socket.on('face_detected', function(data) {
+            document.getElementById('status').innerText = data.status;
+        });
     </script>
 
-    <script src="app.js"></script> 
+  <a id = "aoki">青木</a>
+  <a id = "tsue">津江</a>
+  <a id = "yokosuka">横須賀</a>
+  <a id = "kubota">久保田</a>
+  <a id = "mukai">向井</a>
+  <a id = "tanaka">田中</a>
+  <a id = "takahashi">髙橋</a>
+  <a id = "wada">和田</a>
+  <a id = "yoshida">吉田</a>
+
+  <label class="toggle-button-2">
+    <input type="checkbox" id="toggle2"/>
+    </label>
+
+  <label id = "ON" class="toggle-button-3">
+  <input type="checkbox" id="toggle3"/>
+  </label>
+
+  <label class="toggle-button-4">
+  <input type="checkbox" id="toggle4"/>
+  </label>
+
+  <label class="toggle-button-5">
+  <input type="checkbox" id="toggle5"/>
+  </label>
+
+  <label class="toggle-button-6">
+  <input type="checkbox" id="toggle6"/>
+  </label>
+
+  <label class="toggle-button-7">
+  <input type="checkbox" id="toggle7"/>
+  </label>
+
+  <label class="toggle-button-8">
+  <input type="checkbox" id="toggle8"/>
+  </label>
+
+  <label class="toggle-button-9">
+  <input type="checkbox" id="toggle9"/>
+  </label>
+
+  <label class="toggle-button-10">
+  <input type="checkbox" id="toggle10"/>
+  </label>
+
+  <script>//Pythonからの戻り値を受け取るところ：Pythonにこんな感じのを書く感じ：return render_template("index.html", result = 変数)
+    
+      let result = "{{ status }}"
+
+        // let result1 = "{{ result1 }}"; //津江が認識できたらresult1の値を"認識"、できていなかったら"認識できない"にしてください。
+        // let result2 = "{{ result2 }}"; //上の津江の代わりに田中さんです。
+        // let result3 = "{{ result3 }}";//上の津江の代わりに髙橋さんです。
+        // let result4 = "{{ result4 }}"; //上の津江の代わりに吉田さんです。
+
+  </script>
 </body>
 </html>

@@ -6,31 +6,480 @@ body {
     height: 100vh;
     margin: 0;
     padding: 1%;
-    background-image:url("https://chicodeza.com/wordpress/wp-content/uploads/pinnkugurade-tx3.png");
-    background-repeat: no-repeat;
-    background-position:0% 0%;
-    background-size: cover;
+    background-color: #ffffff;
     overflow: hidden;
 }
 
-h1 {
+/* h1 {
     text-align: center;
-    color: azure;
-}
-
-table{
-    border-collapse:separate;
-    border-spacing: 5px;
+    color: black;
+} */
+#title {
+    position: absolute;
+    top: 5%;
+    left: 10%;
     width: 50%;
-    height: 80%;
+    height: auto;
+    max-height: 50%;
+    object-fit: contain;
+  }
+
+  .face-camera {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    width: 25vw; /* ビューポート幅の 25% に設定 */
+    max-width: 320px; /* 最大幅を設定してはみ出し防止 */
+    height: auto;
+    overflow: hidden; /* はみ出しを防ぐ */
+    border: 2px solid black; /* デバッグ用（不要なら削除） */
   }
   
-th{
-    border-radius: 5px;
-    text-align: center;
-    width: calc(100%/3);
-    height: calc(100%/3);
-    background-color: #c2c2c2;
-    color: rgb(0, 0, 0);
-    border:solid 1% #000000;
+  #camera {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
+
+  .toggle-button-2 {
+    display: inline-block;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-2:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-2::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-2:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-2 input {
+    display: none;
+}
+
+
+.toggle-button-3 {
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-3:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-3::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-3:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-3 input {
+    display: none;
+}
+
+.toggle-button-4 {
+    display: inline-block;
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-4:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-4::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-4:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-4 input {
+    display: none;
+}
+
+.toggle-button-5 {
+    display: inline-block;
+    position: absolute;
+    left: 10%;
+    top: 65%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-5:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-5::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-5:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-5 input {
+    display: none;
+}
+
+.toggle-button-6 {
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+    top: 65%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-6:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-6::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-6:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-6 input {
+    display: none;
+}
+
+.toggle-button-7 {
+    display: inline-block;
+    position: absolute;
+    left: 70%;
+    top: 65%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-7:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-7::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-7:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-7 input {
+    display: none;
+}
+
+.toggle-button-8 {
+    display: inline-block;
+    position: absolute;
+    left: 10%;
+    top: 80%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-8:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-8::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-8:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-8 input {
+    display: none;
+}
+
+.toggle-button-9 {
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+    top: 80%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-9:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-9::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-9:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-9 input {
+    display: none;
+}
+  
+.toggle-button-10 {
+    display: inline-block;
+    position: absolute;
+    left: 70%;
+    top: 80%;
+    width: 300px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid #dddddd;
+    box-sizing: content-box;
+    cursor: pointer;
+    transition: border-color .4s;
+}
+
+.toggle-button-10:has(:checked) {
+    border-color: #4bd865;
+}
+
+.toggle-button-10::after {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #dddddd;
+    content: '';
+    transition: left .4s;
+}
+
+.toggle-button-10:has(:checked)::after {
+    left: calc(100% - 50px); /* 右端まで移動 */
+    background-color: #4bd865;
+}
+
+.toggle-button-10 input {
+    display: none;
+}
+
+/* 初期の#Aokiテキストの色 */
+#aoki {
+    position: absolute;
+    top: 52%;
+    left: 20%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s; /* 色が変化する際のトランジション */
+}
+
+#tsue{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
+
+#yokosuka{
+    position: absolute;
+    top: 52%;
+    left: 80%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
+
+#kubota{
+    position: absolute;
+    top: 67%;
+    left: 20%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
+
+#mukai{
+    position: absolute;
+    top: 67%;
+    left: 50%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
+
+#tanaka{
+    position: absolute;
+    top: 67%;
+    left: 80%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
+
+#takahashi{
+    position: absolute;
+    top: 82%;
+    left: 20%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
+
+#wada{
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
+
+#yoshida{
+    position: absolute;
+    top: 82%;
+    left: 80%;
+    font-weight: bold;
+    color: #dddddd;
+    transition: color 0.3s;
+}
